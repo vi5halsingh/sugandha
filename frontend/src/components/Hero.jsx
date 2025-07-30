@@ -16,7 +16,7 @@ function SeedModel() {
   const { scene } = useGLTF('/assets/seed.glb')
   const modelRef = useRef(null);
   
-  useEffect(() => {+999
+  useEffect(() => {
     // Change the color of the 3D model to yellow
     scene.traverse((child) => {
       if (child.isMesh) {
@@ -24,16 +24,14 @@ function SeedModel() {
       }
     })
   }, [scene])
-  
-  // Effect for the zoom transition
+ 
   useEffect(() => {
     const handleScroll = () => {
       const container = document.querySelector('.hero-model-container');
       if (!container || !modelRef.current) return;
       
       const scrollProgress = parseFloat(container.getAttribute('data-scroll-progress') || 0);
-      
-      // Apply rotation and scale based on scroll progress
+  
       if (scrollProgress > 0) {
         modelRef.current.rotation.y = Math.PI / 4 + (scrollProgress * Math.PI);
         modelRef.current.scale.setScalar(1.5 + (scrollProgress * 4)); // Zoom effect
