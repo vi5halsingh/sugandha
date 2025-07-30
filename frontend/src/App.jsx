@@ -1,18 +1,18 @@
 import { useState, useRef, useEffect } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import './App.css'
-import Navbar from './componants/Navbar'
-import Hero from './componants/Hero'
-import Features from './componants/Features'
-import Benefits from './componants/Benefits'
-import Buy from './componants/Buy'
-import CustomCursor from './componants/CustomCursor'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import Features from './components/Features'
+import Benefits from './components/Benefits'
+import Buy from './components/Buy'
+import CustomCursor from './components/CustomCursor'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis' 
 import { ReactLenis, useLenis } from 'lenis/react'
-import Footer from './componants/Footer'
-import MainRoutes from './routes/MainRoutes'
+import Footer from './components/Footer'
+
 
 function App() {
   const lenis = useLenis(()=>{
