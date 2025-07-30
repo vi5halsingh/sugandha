@@ -11,12 +11,6 @@ const errorHandler = require('./middleware/errorHandler');
 
 // Import routes
 const authRoutes = require('./routes/auth');
-const productRoutes = require('./routes/products');
-const orderRoutes = require('./routes/orders');
-const userRoutes = require('./routes/users');
-const paymentRoutes = require('./routes/payments');
-const reviewRoutes = require('./routes/reviews');
-const contactRoutes = require('./routes/contact');
 
 const app = express();
 
@@ -54,14 +48,13 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Static files
-app.use('/uploads', express.static('uploads'));
+
 
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.status(200).json({
     success: true,
-    message: 'Sherry Honey API is running',
+    message: 'SUGANDHA API is running',
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV
   });
@@ -69,26 +62,14 @@ app.get('/health', (req, res) => {
 
 // API Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/orders', orderRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/payments', paymentRoutes);
-app.use('/api/reviews', reviewRoutes);
-app.use('/api/contact', contactRoutes);
 
 // API Documentation endpoint
 app.get('/api', (req, res) => {
   res.json({
-    message: 'Sherry Honey API',
+    message: 'SUGANDHA API',
     version: '1.0.0',
     endpoints: {
-      auth: '/api/auth',
-      products: '/api/products',
-      orders: '/api/orders',
-      users: '/api/users',
-      payments: '/api/payments',
-      reviews: '/api/reviews',
-      contact: '/api/contact'
+      auth: '/api/auth'
     },
     documentation: 'Check README.md for detailed API documentation'
   });

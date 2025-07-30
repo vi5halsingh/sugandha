@@ -236,7 +236,7 @@ const Benefits = () => {
 <PixelTransition
   firstContent={
     <img
-      src="/src/assets/paddy seed.svg"
+      src="/src/assets/paddy_seed.svg"
       alt="default pixel transition content, a seed!"
       style={{ width: "100%", height: "100%", objectFit: "cover" }}
     />
@@ -260,7 +260,7 @@ const Benefits = () => {
   className="custom-pixel-card w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
 />
               {/* <img 
-                src="/src/assets/paddy seed.svg" 
+                src="/src/assets/paddy_seed.svg" 
                 alt="Paddy Seed" 
                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
               />

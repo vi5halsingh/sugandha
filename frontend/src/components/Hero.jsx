@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 // 3D Model component
 function SeedModel() {
-  const { scene } = useGLTF('/src/assets/seed.glb')
+  const { scene } = useGLTF('/assets/seed.glb')
   const modelRef = useRef(null);
   
   useEffect(() => {+999
@@ -68,7 +68,7 @@ function SeedModel() {
 }
 
 // Preload the 3D model
-useGLTF.preload('/src/assets/seed.glb')
+useGLTF.preload('/assets/seed.glb')
 
 const Hero = () => {
   const heroRef = useRef(null)

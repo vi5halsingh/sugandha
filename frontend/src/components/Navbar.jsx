@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import SplitText from "../../animated/SplitText";
-import paddySeedLogo from "../assets/paddy seed.svg";
+import paddySeedLogo from "../assets/paddy_seed.svg";
 import AuthForms from './AuthForms';
 
 

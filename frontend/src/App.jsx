@@ -7,6 +7,7 @@ import Features from './components/Features'
 import Benefits from './components/Benefits'
 import Buy from './components/Buy'
 import CustomCursor from './components/CustomCursor'
+import Loader from './components/Loader'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis' 
@@ -15,6 +16,7 @@ import Footer from './components/Footer'
 
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const lenis = useLenis(()=>{
 
   })
@@ -23,6 +25,10 @@ function App() {
   
   // Register GSAP plugins
   gsap.registerPlugin(ScrollTrigger);
+  
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
   
   useEffect(() => {
     // Create a scroll trigger for the 3D model transition
@@ -49,25 +55,31 @@ function App() {
     <div ref={appRef} className="relative">
       <ReactLenis root/>
       <CustomCursor />
-   
-      <Navbar />
-      <div ref={modelRef} className="hero-model-container">
-        <section id="home">
-          <Hero />
-        </section>
-        <section id="features">
-          <Features />
-        </section>
-        <section id="about">
-          <Benefits />
-        </section>
-        <section id="buy">
-          <Buy />
-        </section>
-          <section id="footer">
-          <Footer/>
-        </section>
-      </div>
+      
+      {isLoading && <Loader onLoadingComplete={handleLoadingComplete} />}
+      
+      {!isLoading && (
+        <>
+          <Navbar />
+          <div ref={modelRef} className="hero-model-container">
+            <section id="home">
+              <Hero />
+            </section>
+            <section id="features">
+              <Features />
+            </section>
+            <section id="about">
+              <Benefits />
+            </section>
+            <section id="buy">
+              <Buy />
+            </section>
+            <section id="footer">
+              <Footer/>
+            </section>
+          </div>
+        </>
+      )}
     </div>  
   )
 }

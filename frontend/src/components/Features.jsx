@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitText from '../../animated/SplitText';
 import MagneticButton from './MagneticButton';
+import TextPressure from '../../animated/TextPressure';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -85,22 +86,7 @@ const FeatureCard = ({ title, description, icon, index }) => {
         }
       }
     );
-    // Animate title
-    gsap.fromTo(titleRef.current,
-      { y: 30, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.7,
-        delay: index * 0.2 + 0.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: cardRef.current,
-          start: 'top bottom-=100',
-          toggleActions: 'play reverse play reverse',
-        }
-      }
-    );
+ 
     // Animate description
     gsap.fromTo(descRef.current,
       { y: 20, opacity: 0 },
@@ -189,19 +175,7 @@ const Features = () => {
     });
     
     // Title animation
-    gsap.fromTo(titleRef.current,
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: 'top bottom-=100',
-          toggleActions: 'play reverse play reverse'
-        }
-      }
-    );
+   
   }, { scope: sectionRef });
 
   const features = [
@@ -249,17 +223,13 @@ const Features = () => {
       <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-yellow-500/20 rounded-full filter blur-3xl animate-pulse"></div>
       <div className="container mx-auto relative z-10">
         <div ref={titleRef} className="text-center mb-16">
-          <SplitText
-            text="Revolutionary Features"
-            className="text-5xl font-bold text-white mb-4"
-            animation={{
-              y: 100,
-              opacity: 0,
-              stagger: 0.05,
-              ease: "back.out(1.7)",
-              duration: 1,
-              
-            }}
+        <TextPressure 
+            text="Revolutionari Features" 
+            className="text-6xl font-bold text-white mb-4"
+            textColor="#FFFFFF"
+            weight={true}
+            width={true}
+            italic={false}
           />
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Our paddy seeds are engineered with cutting-edge technology to maximize yield while minimizing environmental impact.
