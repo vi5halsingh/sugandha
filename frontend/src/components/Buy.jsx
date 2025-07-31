@@ -84,7 +84,7 @@ const Buy = () => {
         scrollTrigger: {
           trigger: titleRef.current,
           start: 'top bottom-=100',
-          toggleActions: 'play none none reverse'
+          toggleActions: 'play reverse play reverse'
         }
       }
     );
@@ -102,6 +102,7 @@ const Buy = () => {
           start: 'top bottom-=100',
           end:'bottom top+=200',
           toggleActions: 'play reverse play reverse',
+          // markers:true
         }
       }
     );
