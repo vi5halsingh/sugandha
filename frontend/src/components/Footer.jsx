@@ -60,8 +60,7 @@ const Footer = () => {
         ease: "power3.out",
         scrollTrigger: {
           trigger: iconsRef.current,
-          start: "top 90%",
-          end:"bottom 50%",
+          start: 'top bottom-=100',     
           toggleActions: "play reverse play reverse",
           // markers:true
         },

@@ -100,7 +100,6 @@ const Buy = () => {
         scrollTrigger: {
           trigger: contentRef.current,
           start: 'top bottom-=100',
-          end:'bottom top+=200',
           toggleActions: 'play reverse play reverse',
           // markers:true
         }
