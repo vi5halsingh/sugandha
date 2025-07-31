@@ -6,6 +6,7 @@ import SplitText from '../../animated/SplitText';
 import TextPressure from '../../animated/TextPressure';
 import MagneticButton from './MagneticButton';
 import PixelTransition from '../../animated/PixelTransition';
+import seedImage from "../assets/paddy_seed.svg"
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -236,7 +237,7 @@ const Benefits = () => {
 <PixelTransition
   firstContent={
     <img
-      src="../assets/paddy_seed.svg"
+      src={seedImage}
       alt="default pixel transition content, a seed!"
       style={{ width: "100%", height: "100%", objectFit: "cover" }}
     />
