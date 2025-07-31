@@ -34,8 +34,8 @@ function SeedModel() {
   
       if (scrollProgress > 0) {
         modelRef.current.rotation.y = Math.PI / 4 + (scrollProgress * Math.PI);
-        modelRef.current.scale.setScalar(1.5 + (scrollProgress * 4)); // Zoom effect
-        modelRef.current.position.z = -scrollProgress * 2; // Move forward
+        modelRef.current.scale.setScalar(2.5 - (scrollProgress * 3)); // Faster zoom out effect
+        modelRef.current.position.z = scrollProgress * 2; // Move backward (zoom out)
       }
     };
     
@@ -56,8 +56,8 @@ function SeedModel() {
       <primitive 
           ref={modelRef}
           object={scene} 
-          scale={1.5} 
-          position={[0, -1.0, 0]} // Adjusted Y position to show full height
+          scale={2.5} 
+          position={[0, 0, 0]} // Centered position
           rotation={[0, Math.PI / 4, 0]}
           className="hero-model"
         />
@@ -121,6 +121,33 @@ const Hero = () => {
       opacity: 0.5,
       ease: 'none'
     })
+
+    // Scroll-triggered zoom animations for text elements
+    gsap.to(headingRef.current, {
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      },
+      scale: 1.5,
+      y: -50,
+      x:200,
+      ease: 'power2.out'
+    })
+
+    gsap.to(descriptionRef.current, {
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      },
+      scale: 1.3,
+      y: -30,
+      x:200,
+      ease: 'power2.out'
+    })
   }, { scope: heroRef })
 
   return (
@@ -170,15 +197,15 @@ const Hero = () => {
         
         {/* 3D Model */}
      
-        <div className='absolute  w-full md:w-1/2 h-[500px] md:h-[600px] mt-8 md:mt-0'>
-          <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-            <ambientLight intensity={0.5} />
-            <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
+        <div className='absolute inset-0 w-full h-full flex items-center justify-center'>
+          <Canvas camera={{ position: [0, 0, 8], fov: 35 }} className='w-full h-full'>
+            <ambientLight intensity={0.8} />
+            <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1.5} castShadow />
             <Suspense fallback={null}>
               <SeedModel />
               <Environment preset="sunset" />
             </Suspense>
-            <OrbitControls enableZoom={false} />
+            <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} />
           </Canvas>
         </div>
       </div>

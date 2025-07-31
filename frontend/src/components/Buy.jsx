@@ -27,7 +27,6 @@ const PriceCard = ({ title, price, features, popular, index }) => {
         scrollTrigger: {
           trigger: cardRef1.current,
           start: 'top bottom-=300',
-          end:'bottom top+=300',
           toggleActions: 'play reverse play reverse',
         }
       }
@@ -85,7 +84,7 @@ const Buy = () => {
         scrollTrigger: {
           trigger: titleRef.current,
           start: 'top bottom-=100',
-          toggleActions: 'play none none none'
+          toggleActions: 'play none none reverse'
         }
       }
     );
@@ -101,7 +100,7 @@ const Buy = () => {
         scrollTrigger: {
           trigger: contentRef.current,
           start: 'top bottom-=50',
-          toggleActions: 'play none none none'
+          toggleActions: 'play none none reverse'
         }
       }
     );

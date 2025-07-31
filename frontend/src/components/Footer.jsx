@@ -27,8 +27,7 @@ const Footer = () => {
         scrollTrigger: {
           trigger: footerRef.current,
           start: "top 90%",
-          end: "bottom 60%",
-          toggleActions: "play reverse play reverse",
+          toggleActions: "play reverse reverese reverse",
         },
       }
     );
@@ -45,8 +44,7 @@ const Footer = () => {
         scrollTrigger: {
           trigger: titleRef.current,
           start: "top 95%",
-          end: "bottom 70%",
-          toggleActions: "play reverse play reverse",
+          toggleActions: "play none none reverse",
         },
       }
     );
@@ -63,8 +61,7 @@ const Footer = () => {
         scrollTrigger: {
           trigger: iconsRef.current,
           start: "top 97%",
-          end: "bottom 75%",
-          toggleActions: "play reverse play reverse",
+          toggleActions: "play none none reverse",
         },
       }
     );
@@ -82,8 +79,7 @@ const Footer = () => {
         scrollTrigger: {
           trigger: footerRef.current,
           start: "top 90%",
-          end: "bottom 60%",
-          toggleActions: "play reverse play reverse",
+          toggleActions: "play none none reverse",
         },
       }
     );
@@ -100,9 +96,7 @@ const Footer = () => {
         scrollTrigger: {
           trigger: footerRef.current,
           start: "top 80%",
-          end: "bottom 98%",
-          toggleActions: "play reverse play reverse",
-          // markers:true
+          toggleActions: "play none none reverse",
         },
       }
     );
