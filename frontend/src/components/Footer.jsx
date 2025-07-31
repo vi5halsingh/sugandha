@@ -78,8 +78,9 @@ const Footer = () => {
         ease: "back.out(1.7)",
         scrollTrigger: {
           trigger: footerRef.current,
-          start: "top 90%",
-          toggleActions: "play reverse play reverse",
+          start: 'top bottom-=100',
+          end:'bottom top+=200',
+          toggleActions: 'play reverse play reverse',
         },
       }
     );
@@ -95,8 +96,9 @@ const Footer = () => {
         ease: "power3.out",
         scrollTrigger: {
           trigger: footerRef.current,
-          start: "top 80%",
-          toggleActions: "play reverse play reverse",
+          start: 'top bottom-=100',
+          end:'bottom top+=200',
+          toggleActions: 'play reverse play reverse',
         },
       }
     );

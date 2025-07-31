@@ -99,10 +99,9 @@ const Buy = () => {
         delay: 0.2,
         scrollTrigger: {
           trigger: contentRef.current,
-          start: 'top bottom-=50',
-          end:"bottom 20%",
-          // markers:true,
-          toggleActions: 'play reverse play reverse'
+          start: 'top bottom-=100',
+          end:'bottom top+=200',
+          toggleActions: 'play reverse play reverse',
         }
       }
     );
