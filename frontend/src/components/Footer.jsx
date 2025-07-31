@@ -129,7 +129,7 @@ const Footer = () => {
     });
   };
   const items = [
-    { icon: <FaSquareInstagram />, color: 'blue', label: 'insta', link: 'https://www.instagram.com/0._vishal?igsh=MTgwaWtkajd5ZHRnNQ%3D%3D' },
+    { icon: <FaSquareInstagram />, color: 'blue', label: 'insta', link: 'https://www.instagram.com/dino4dev?igsh=MTc4MWV1dmxpMmkwbA==' },
     { icon: <FaSquareGithub />, color: 'purple', label: 'github', link: 'https://github.com/vi5halsingh' },
     { icon: <FaLinkedin />, color: 'red', label: 'linkedIn', link: 'https://www.linkedin.com/in/vi5halsingh/' },
   ];
