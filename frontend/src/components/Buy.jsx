@@ -170,7 +170,6 @@ const Buy = () => {
             Select the perfect package for your farming needs and transform your yield today.
           </p>
         </div>
-        
         <div ref={contentRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {priceOptions.map((option, index) => (
             <PriceCard 
@@ -183,7 +182,6 @@ const Buy = () => {
             />
           ))}
         </div>
-        
         <div className="mt-16 text-center">
           <h3 className="text-2xl font-bold text-white mb-4">Need a Custom Solution?</h3>
           <p className="text-gray-300 max-w-2xl mx-auto mb-6">

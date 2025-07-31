@@ -27,7 +27,7 @@ const Footer = () => {
         scrollTrigger: {
           trigger: footerRef.current,
           start: "top 90%",
-          toggleActions: "play reverse reverese reverse",
+          toggleActions: "play reverse play reverse",
         },
       }
     );

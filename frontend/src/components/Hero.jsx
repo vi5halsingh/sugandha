@@ -34,7 +34,7 @@ function SeedModel() {
   
       if (scrollProgress > 0) {
         modelRef.current.rotation.y = Math.PI / 4 + (scrollProgress * Math.PI);
-        modelRef.current.scale.setScalar(2.5 - (scrollProgress * 3)); // Faster zoom out effect
+        modelRef.current.scale.setScalar(2.5 - (scrollProgress * 5)); // Much faster zoom out effect
         modelRef.current.position.z = scrollProgress * 2; // Move backward (zoom out)
       }
     };

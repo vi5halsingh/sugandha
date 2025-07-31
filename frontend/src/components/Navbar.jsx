@@ -6,6 +6,7 @@ import gsap from 'gsap'
 import SplitText from "../../animated/SplitText";
 import paddySeedLogo from "../assets/paddy_seed.svg";
 import AuthForms from './AuthForms';
+import { HiX, HiMenu } from 'react-icons/hi';
 
 
 const Navbar = () => {
@@ -20,6 +21,7 @@ const Navbar = () => {
   const [user, setUser] = useState(null)
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Scroll handling for navbar hide/show
   useEffect(() => {
@@ -80,6 +82,14 @@ const Navbar = () => {
     setUser(userData);
   };
 
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
+  const openMobileMenu = () => {
+    setIsMobileMenuOpen(true);
+  };
+
   return (
     <>
       <div 
@@ -92,10 +102,10 @@ const Navbar = () => {
       >
         <div id='navFirst' className='p-4 w-full '>
           <ul className='px-2 border rounded-full flex gap-8 justify-between items-center w-[70%]'>
-             <a href='#home' className=' navitem text-white text-lg font-medium  w-full h-[50px] cursor-context-menu'>
+             <a href='#home' className=' navitem text-white text-lg font-medium text-center md:w-full h-[50px] cursor-context-menu'>
              <img src={paddySeedLogo} alt="logo" className='h-full cursor-pointer'/>
             </a>
-            <a href="#about" className=' navitem text-white text-lg font-medium transition-transform duration-500 hover:text-blue-400 w-full' onMouseEnter={() => setHoverAbout(true)} onMouseLeave={() => setHoverAbout(false)}>
+            <a href="#about" className='hidden md:inline-block navitem text-white text-lg font-medium transition-transform duration-500 hover:text-blue-400 w-full' onMouseEnter={() => setHoverAbout(true)} onMouseLeave={() => setHoverAbout(false)}>
               {hoverAbout ? 
              <SplitText 
              text="About"
@@ -111,7 +121,7 @@ const Navbar = () => {
              /> 
             : "About" }
             </a>
-           <a href="#features" className='  navitem text-white text-lg font-medium transition-transform duration-500 hover:text-blue-400 w-full' onMouseEnter={() => setHoverFeature(true)} onMouseLeave={() => setHoverFeature(false)}>
+           <a href="#features" className='hidden md:inline-block  navitem text-white text-lg font-medium transition-transform duration-500 hover:text-blue-400 w-full' onMouseEnter={() => setHoverFeature(true)} onMouseLeave={() => setHoverFeature(false)}>
               {hoverFeature ? 
              <SplitText 
              className=''
@@ -131,7 +141,7 @@ const Navbar = () => {
          
           </ul>
         </div>
-        <div id='navSecond' className='backdrop-blur-sm border rounded-md mt-3 pl-25  flex justify-center w-full py-2 text-center'> <TextPressure 
+        <div id='navSecond' className='backdrop-blur-sm border rounded-md mt-3 md:pl-25 pl-3 md:w-full w-[350px] py-2 text-center'> <TextPressure 
         text='SUGANDHA'
         flex={true}
         stroke={false}
@@ -144,8 +154,8 @@ minFontSize={25}
      className='w-[80%]  m-auto text-center logo text-2xl h-full'
      
         /></div>
-        <div id='navThird' className='w-full flex justify-end  items-center  px-5 gap-4'>  
-           <a href="#buy" className='border border-white h-[40px] text-center rounded-full px-3 py-1 navitem text-white text-lg font-medium transition-transform duration-500 hover:text-blue-400 ' onMouseEnter={() => setHoverContact(true)} onMouseLeave={() => setHoverContact(false)}>
+        <div id='navThird' className='w-full md:flex justify-end  items-center  px-5 gap-4'>  
+           <a href="#buy" className='hidden md:inline-block border border-white h-[40px] text-center rounded-full px-3 py-1 navitem text-white text-lg font-medium transition-transform duration-500 hover:text-blue-400 ' onMouseEnter={() => setHoverContact(true)} onMouseLeave={() => setHoverContact(false)}>
               {hoverContact ? 
              <SplitText 
              text="Buy"
@@ -166,7 +176,7 @@ minFontSize={25}
               <>
                 <button 
                   onClick={() => openAuthForm('login')}
-                  className='border border-white h-[40px] text-center rounded-full px-3 py-1 navitem text-white text-lg font-medium transition-transform duration-500 hover:text-blue-400'
+                  className='hidden md:inline-block border border-white h-[40px] text-center rounded-full px-3 py-1 navitem text-white text-lg font-medium transition-transform duration-500 hover:text-blue-400'
                   onMouseEnter={() => setHoverLogin(true)} 
                   onMouseLeave={() => setHoverLogin(false)}
                 >
@@ -189,7 +199,7 @@ minFontSize={25}
 
                 <button 
                   onClick={() => openAuthForm('signup')}
-                  className='border border-white h-[40px] text-center rounded-full px-3 py-1 navitem text-white text-lg font-medium transition-transform duration-500 hover:text-blue-400'
+                  className=' hidden md:inline-block border border-white h-[40px] text-center rounded-full px-3 py-1 navitem text-white text-lg font-medium transition-transform duration-500 hover:text-blue-400'
                   onMouseEnter={() => setHoverSignup(true)} 
                   onMouseLeave={() => setHoverSignup(false)}
                 >
@@ -211,7 +221,7 @@ minFontSize={25}
                 </button>
               </>
             ) : (
-              <div className="flex items-center gap-2">
+              <div className="md:flex  hidden items-center gap-2">
                 <span className="text-white text-sm">Welcome, {user?.name}</span>
                 <button 
                   onClick={handleLogout}
@@ -221,7 +231,18 @@ minFontSize={25}
                 </button>
               </div>
             )}
+                {/* Hamburger for mobile only */}
+                <button
+          className="border border-white h-[40px] text-center rounded-full px-3 md:hidden text-white absolute right-4 top-3 z-50"
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          aria-label="Open menu"
+        >
+          {isMobileMenuOpen ? <HiX size={28} /> : <HiMenu size={28} />}
+        </button>
           </div>
+          
+    
+ 
     </div>
 
     {/* Auth Forms Modal */}
@@ -232,6 +253,50 @@ minFontSize={25}
       onSwitchForm={switchAuthForm}
       onAuthSuccess={handleAuthSuccess}
     />
+
+    {isMobileMenuOpen && (
+      <div className="fixed inset-0 bg-black/90 z-40 flex flex-col items-center justify-center md:hidden">
+        <button
+          className="absolute top-6 right-6 text-white"
+          onClick={closeMobileMenu}
+          aria-label="Close menu"
+        >
+          <HiX size={32} />
+        </button>
+        <nav className="flex flex-col gap-8 items-center">
+          <a href="#home" onClick={closeMobileMenu} className="text-white text-2xl font-bold">Home</a>
+          <a href="#about" onClick={closeMobileMenu} className="text-white text-2xl font-bold">About</a>
+          <a href="#features" onClick={closeMobileMenu} className="text-white text-2xl font-bold">Features</a>
+          <a href="#buy" onClick={closeMobileMenu} className="text-white text-2xl font-bold">Buy</a>
+          {!isLoggedIn ? (
+            <>
+              <button
+                onClick={() => { openAuthForm('login'); closeMobileMenu(); }}
+                className="border border-white rounded-full px-8 py-3 text-white text-lg font-medium hover:text-blue-400 transition-colors duration-300"
+              >
+                Login
+              </button>
+              <button
+                onClick={() => { openAuthForm('signup'); closeMobileMenu(); }}
+                className="border border-white rounded-full px-8 py-3 text-white text-lg font-medium hover:text-blue-400 transition-colors duration-300"
+              >
+                Sign Up
+              </button>
+            </>
+          ) : (
+            <div className="flex flex-col items-center gap-4">
+              <span className="text-white text-lg">Welcome, {user?.name}</span>
+              <button
+                onClick={() => { handleLogout(); closeMobileMenu(); }}
+                className="border border-white rounded-full px-8 py-3 text-white text-lg font-medium hover:text-blue-400 transition-colors duration-300"
+              >
+                Logout
+              </button>
+            </div>
+          )}
+        </nav>
+      </div>
+    )}
   </>
   )
 }
