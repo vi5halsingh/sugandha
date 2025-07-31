@@ -101,7 +101,7 @@ const Buy = () => {
           trigger: contentRef.current,
           start: 'top bottom-=50',
           end:"bottom 20%",
-          markers:true,
+          // markers:true,
           toggleActions: 'play reverse play reverse'
         }
       }
